@@ -5,7 +5,7 @@ const GenerateReport:FC<any>= ({memberId}) => {
     const generatePDFFromBackend = async (personId: any) => {
         try {
           const response = await fetch(
-            `http://localhost:3001/api/v1/report/${memberId}`
+            `http://192.168.70.79:3001/api/v1/report/${memberId}`
           );
           // console.log(await response.json().ids)
           if (response.ok) {

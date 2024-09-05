@@ -42,8 +42,9 @@ export const MemberInfoProvider: FC<ComponentProp> = ({children}) => {
     // const [isLoading, setIsLoading] = useState<boolean>()
     useEffect(() => {
         // setIsLoading(true)
-        const url=`http://localhost:3001/api/v1/members?${parameter.Mobile?'&Mobile='+parameter.Mobile:''}${parameter.CusName?'&CusName='+parameter.CusName:''}${parameter.RowPerPage?'&RowPerPage='+parameter.RowPerPage:''}&PageNumber=${parameter.PageNumber||1}${parameter.PrvCusID?'&PrvCusID='+parameter.PrvCusID:''}`
+        const url=`http://192.168.70.79:3001/api/v1/members?${parameter.Mobile?'&Mobile='+parameter.Mobile:''}${parameter.CusName?'&CusName='+parameter.CusName:''}${parameter.RowPerPage?'&RowPerPage='+parameter.RowPerPage:''}&PageNumber=${parameter.PageNumber||1}${parameter.PrvCusID?'&PrvCusID='+parameter.PrvCusID:''}`
 		fetch(url).then(res => res.json()).then(data => {
+            console.log(data)
             setMembersInfo({data:data.data})
 
         }).catch(err => {

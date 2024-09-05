@@ -34,7 +34,7 @@ function App() {
   ) : (
     <DefaultLayout>
       <Routes>
-        <Route
+        {/* <Route
           index
           element={
             <>
@@ -42,7 +42,7 @@ function App() {
               <ECommerce />
             </>
           }
-        />
+        /> */}
         <Route
           path="/calendar"
           element={
@@ -80,7 +80,7 @@ function App() {
           }
         />
         <Route
-          path="/tables"
+          path="/"
           element={
             <>
               <PageTitle title="Tables | TailAdmin - Tailwind CSS Admin Dashboard Template" />

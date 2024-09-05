@@ -16,16 +16,19 @@ interface memberInterface{
   CusName: string;
   Email:string;
   Phone:string;
+  Mobile: string;
 }
 interface memberDetails {
   CusName: string;
   PrvCusID: string;
+  Mobile: string
 }
 const TableThree = () => {
 const {isOpenModal, setIsOpenModal} = useModalContext() || {};
 const [memberDetailInfo, setMemberDetailInfo] = useState<memberDetails>({
   CusName: '',
   PrvCusID: '',
+  Mobile: ''
 });
 const [members, setMembers] = useState([])
 
@@ -36,15 +39,14 @@ const fetchRelation = async () => {
 }
 
 const {memberInfos, parameter, setParameter} = useMembersInfo()
-console.log('member infos ', memberInfos.data.data)
 useEffect(() => {
   fetchRelation().then(result => {
-    setMembers(result.data.data.data)
+    setMembers(result?.data?.data?.data)
   });
 }, []);
 
   return (
-    memberInfos&&memberInfos.data.data.length>0&&(
+    memberInfos&&memberInfos?.data?.data?.length>0&&(
       <>
         <div className={`rounded-sm border border-stroke bg-white px-5 pt-6 pb-2.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1`}>
           <div className="max-w-full overflow-x-auto">
@@ -72,7 +74,7 @@ useEffect(() => {
                 </tr>
               </thead>
               <tbody>
-                {memberInfos.data.data.map((packageItem:memberInterface, key:any) => (
+                {memberInfos?.data?.data?.map((packageItem:memberInterface, key:any) => (
                   <tr key={key}>
                     <td className="border-b border-[#eee] py-5 px-4 pl-9 dark:border-strokedark xl:pl-11">
                       <h5 className="font-medium text-black dark:text-white">
@@ -97,7 +99,7 @@ useEffect(() => {
                     </td>
                     <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
                       <p className="text-black dark:text-white">
-                        {packageItem.Phone}
+                        {packageItem.Mobile}
                       </p>
                     </td>
                     <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">

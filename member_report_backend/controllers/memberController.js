@@ -82,7 +82,7 @@ exports.getAllMembers = async(req,res) => {
     const PageNumber = req.query.PageNumber?req.query.PageNumber:1
     const PrvCusID = req.query.PrvCusID?req.query.PrvCusID:null;
     const CusName = req.query.CusName?req.query.CusName:null;
-    const results = await pool.request().input('RowPerPage',RowPerPage).input('PageNumber',PageNumber).input('Mobile',Mobile).input('CusName', CusName).input('PrvCusID',PrvCusID).output('TotalPages').output('TotalDocuments').execute('spSelectMembers');
+    const results = await pool.request().input('RowPerPage',RowPerPage).input('PageNumber',PageNumber).input('SearchTerm', CusName).output('TotalPages').output('TotalDocuments').execute('spSelectMembers');
     res.status(200).json({
         status:'Success',
         data: {
